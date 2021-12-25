@@ -64,9 +64,76 @@ void right(){
 
                     }
                     }
-                }
-                newGame();
-                
+                }                
+            }
+            }
+
+        }
+    }
+}
+void down(){
+    int temp = 0;
+    for(int i = 3; i >= 0; i--){
+        for(int j = 0; j < 4; j++){
+            if(i != 3){
+            if(gri[i][j] != 0 && gri[i+1][j] == 0){
+                temp = gri[i][j];
+                gri[i][j] = 0;
+                for(int k = i; k < 4; k++){
+                    if(k != 3){
+                    if(gri[k+1][j] == 0){
+                        gri[k+1][j] = temp;
+                        gri[k][j] = 0;
+
+                    }
+                    }
+                }                
+            }
+            }
+
+        }
+    }
+}
+void left(){
+     int temp = 0;
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j <= 3; j++){
+            if(j != 0){
+            if(gri[i][j] != 0 && gri[i][j-1] == 0){
+                temp = gri[i][j];
+                gri[i][j] = 0;
+                for(int k = j; k >= 0; k--){
+                    if(k != 0){
+                    if(gri[i][k-1] == 0){
+                        gri[i][k-1] = temp;
+                        gri[i][k] = 0;
+
+                    }
+                    }
+                }                
+            }
+            }
+
+        }
+    }
+}
+void up(){
+     int temp = 0;
+    for(int i = 0; i < 4; i++){
+        for(int j = 0; j <= 3; j++){
+            if(i != 0){
+            if(gri[i][j] != 0 && gri[i-1][j] == 0){
+                temp = gri[i][j];
+                gri[i][j] = 0;
+                for(int k = i; k >= 0; k--){
+                    if(k != 0){
+                    if(gri[k-1][j] == 0){
+                        gri[k-1][j] = temp;
+                        gri[k][j] = 0;
+
+                    }
+                    }
+                }                
             }
             }
 
@@ -82,12 +149,22 @@ void move(){
     case 'd':
         right();
         break;
+    case 'a':
+         left();
+         break;
+    case 'w':
+         up();
+         break;
+    case 's':
+         down();
+         break;
 
     default:
     cout << "pspu";
         break;
     }
 }
+
 
 int main(){
     shuffle();
