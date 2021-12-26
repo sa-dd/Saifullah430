@@ -51,44 +51,52 @@ void newGame(){
 void right(){
     int temp = 0;
     for(int i = 0; i < 4; i++){
-        for(int j = 3; j >= 0; j--){
-            if(j != 3){
-            if(gri[i][j] != 0 && gri[i][j+1] == 0){
+        int addTrue = true;
+        for(int j = 2; j >= 0; j--){
+            if(gri[i][j] != 0){
                 temp = gri[i][j];
-                gri[i][j] = 0;
-                for(int k = j; k < 4; k++){
-                    if(k != 3){
+                for(int k = j; k <= 2; k++){
                     if(gri[i][k+1] == 0){
                         gri[i][k+1] = temp;
                         gri[i][k] = 0;
-
                     }
+                    else if(gri[i][k+1] == temp && addTrue){
+                        gri[i][k+1] += temp;
+                        gri[i][k] = 0;
+                        addTrue = false;
                     }
-                }                
-            }
-            }
+                    else{
+                        break;
+                    }
 
+                }
+            }
+             
         }
     }
 }
 void down(){
     int temp = 0;
-    for(int i = 3; i >= 0; i--){
+    for(int i = 2; i >= 0; i--){
         for(int j = 0; j < 4; j++){
-            if(i != 3){
-            if(gri[i][j] != 0 && gri[i+1][j] == 0){
+            int addTrue = true;
+            if(gri[i][j] != 0){
                 temp = gri[i][j];
-                gri[i][j] = 0;
-                for(int k = i; k < 4; k++){
-                    if(k != 3){
+                for(int k = i; k <= 2; k++){
                     if(gri[k+1][j] == 0){
                         gri[k+1][j] = temp;
                         gri[k][j] = 0;
+                    }
+                    else if(gri[k+1][j] == temp && addTrue){
+                        gri[k+1][j] += temp;
+                        gri[k][j] = 0;
+                        addTrue = false;
+                    }
+                    else{
+                        break;
+                    }
 
-                    }
-                    }
-                }                
-            }
+                }
             }
 
         }
@@ -97,46 +105,53 @@ void down(){
 void left(){
      int temp = 0;
     for(int i = 0; i < 4; i++){
-        for(int j = 0; j <= 3; j++){
-            if(j != 0){
-            if(gri[i][j] != 0 && gri[i][j-1] == 0){
+        int addTrue = true;
+        for(int j = 1; j <= 3; j++){
+            if(gri[i][j] != 0){
                 temp = gri[i][j];
-                gri[i][j] = 0;
-                for(int k = j; k >= 0; k--){
-                    if(k != 0){
+                for(int k = j; k >= 1; k--){
                     if(gri[i][k-1] == 0){
                         gri[i][k-1] = temp;
                         gri[i][k] = 0;
-
                     }
+                    else if(gri[i][k-1] == temp && addTrue){
+                        gri[i][k-1] += temp;
+                        gri[i][k] = 0;
+                        addTrue = false;
                     }
-                }                
-            }
-            }
+                    else{
+                        break;
+                    }
 
+                }
+            }
+             
         }
     }
 }
 void up(){
      int temp = 0;
-    for(int i = 0; i < 4; i++){
+    for(int i = 1; i < 4; i++){
         for(int j = 0; j <= 3; j++){
-            if(i != 0){
-            if(gri[i][j] != 0 && gri[i-1][j] == 0){
+            int addTrue = true;
+            if(gri[i][j] != 0){
                 temp = gri[i][j];
-                gri[i][j] = 0;
-                for(int k = i; k >= 0; k--){
-                    if(k != 0){
+                for(int k = i; k >= 1; k--){
                     if(gri[k-1][j] == 0){
                         gri[k-1][j] = temp;
                         gri[k][j] = 0;
-
                     }
+                    else if(gri[k-1][j] == temp && addTrue){
+                        gri[k-1][j] += temp;
+                        gri[k][j] = 0;
+                        addTrue = false;
                     }
-                }                
-            }
-            }
+                    else{
+                        break;
+                    }
 
+                }
+            }
         }
     }
 }
